@@ -9,7 +9,6 @@ MERN Challenge: Book Search Engine
 - [Goals](#goals)
 - [Technologies](#technologies)
 - [Usage](#usage)
-- [Installation](#installation)
 - [Video](#video)
 - [Resources](#resources)
 
