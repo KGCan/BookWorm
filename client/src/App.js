@@ -2,18 +2,18 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import{
   ApolloClient, 
-  MemoryCache, 
+  InMemoryCache, 
   ApolloProvider, 
-  urlLink,
+  createHttpLink,
 } from '@apollo/client';
-import { setContext } from '@apollo/client.link.context';
+import { setContext } from '@apollo/client/link/context';
 
 import SearchBooks from './pages/SearchBooks';
 import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 
-// add in GraphQL endpoing
-const urlLink = createUrlLink({
+// add in GraphQL endpoint
+const httpLink = createHttpLink({
   uri: '/graphql',
 });
 
@@ -29,8 +29,8 @@ const auth = setContext((_, { headers }) => {
 });
 
 const client = new ApolloClient({
-  link: authLink.concat(urlLink),
-  cache: new MemoryCache(),
+  link: auth.concat(httpLink),
+  cache: new InMemoryCache(),
 });
 
 function App() {

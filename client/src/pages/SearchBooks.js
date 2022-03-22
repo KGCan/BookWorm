@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Jumbotron, Container, Col, Form, Button, Card, CardColumns } from 'react-bootstrap';
+import { Jumbotron, Container, Col, Form, Button, Card, CardColumns, } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
 
@@ -34,7 +34,7 @@ const SearchBooks = () => {
 
     try {
       const response = await fetch (
-        `http://www.googleapis.com/books/v1/volumes?q=${searchInput}`
+        `https://www.googleapis.com/books/v1/volumes?q=${searchInput}`
       );
 
       if (!response.ok) {
@@ -75,17 +75,11 @@ const SearchBooks = () => {
         variables: {bookData: { ...bookToSave } }, 
       });
       console.log(savedBookIds);
-      // if (!response.ok) {
-      //   throw new Error ('something went wrong!');
-      // }
-
-      // if book successfully saves to user's account, save book id to state
       setSavedBookIds([...savedBookIds, bookToSave.bookId]);
     } catch (err) {
       console.error(err);
     }
   };
-
   return (
     <>
       <Jumbotron fluid className='text-light bg-dark'>
